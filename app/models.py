@@ -93,35 +93,35 @@ class Reviews(db.Model):
                 response.append(review)
 
         return response
-class Catering:
-    __tablename__='catering'
+# class Catering(db.Model):
+#     __tablename__='catering'
 
-    id = db.Column(db.Integer,primary_key=True)
-    location = db.Column(db.Integer)
-    company = db.Column(db.String(255))
-    service = db.Column(db.String(2550))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
+#     id = db.Column(db.Integer,primary_key=True)
+#     location = db.Column(db.String(255))
+#     company = db.Column(db.String(255))
+#     service = db.Column(db.String(2550))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_catering(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save_catering(self):
+#         db.session.add(self)
+#         db.session.commit()
     
 
-    def __repr__(self):
-        return f'Catering({self.company},{self.service})'
+#     def __repr__(self):
+#         return f'Catering({self.company},{self.service})'
 
-class Grounds:
+class Grounds(db.Model):
     __tablename__='grounds'
 
     id = db.Column(db.Integer,primary_key=True)
-    location = db.Column(db.Integer)
+    location = db.Column(db.String(255))
     company = db.Column(db.String(255))
     service = db.Column(db.String(2550))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
+    reviews_id = db.Column(db.Integer,db.ForeignKey('reviews.id')) 
 
-    def save_grounds(self):
+    def save_ground(self):
         db.session.add(self)
         db.session.commit()
     
@@ -129,17 +129,18 @@ class Grounds:
     def __repr__(self):
         return f'Grounds({self.company},{self.service})'
 
-class Cars:
+class Cars(db.Model):
     __tablename__='cars'
 
     id = db.Column(db.Integer,primary_key=True)
-    location = db.Column(db.Integer)
+    location = db.Column(db.String(255))
     company = db.Column(db.String(255))
     service = db.Column(db.String(2550))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
+    reviews_id = db.Column(db.Integer,db.ForeignKey('reviews.id'))
+    
 
-    def save_cars(self):
+    def save_car(self):
         db.session.add(self)
         db.session.commit()
     
@@ -147,58 +148,58 @@ class Cars:
     def __repr__(self):
         return f'Cars({self.company},{self.service})'
 
-class Photography:
-    __tablename__='photography'
+# class Photography(db.Model):
+#     __tablename__='photography'
 
-    id = db.Column(db.Integer,primary_key=True)
-    location = db.Column(db.Integer)
-    company = db.Column(db.String(255))
-    service = db.Column(db.String(2550))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
+#     id = db.Column(db.Integer,primary_key=True)
+#     location = db.Column(db.String)
+#     company = db.Column(db.String(255))
+#     service = db.Column(db.String(2550))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_photography(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save_photography(self):
+#         db.session.add(self)
+#         db.session.commit()
     
 
-    def __repr__(self):
-        return f'Photography({self.company},{self.service})'
+#     def __repr__(self):
+#         return f'Photography({self.company},{self.service})'
 
-class Tents:
-    __tablename__='tents'
+# class Tents(db.Model):
+#     __tablename__='tents'
 
-    id = db.Column(db.Integer,primary_key=True)
-    location = db.Column(db.Integer)
-    company = db.Column(db.String(255))
-    service = db.Column(db.String(2550))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
+#     id = db.Column(db.Integer,primary_key=True)
+#     location = db.Column(db.String)
+#     company = db.Column(db.String(255))
+#     service = db.Column(db.String(2550))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_tents(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save_tents(self):
+#         db.session.add(self)
+#         db.session.commit()
     
 
-    def __repr__(self):
-        return f'Tents({self.company},{self.service})'
+#     def __repr__(self):
+#         return f'Tents({self.company},{self.service})'
 
-class Music:
-    __tablename__='music'
+# class Music(db.Model):
+#     __tablename__='music'
 
-    id = db.Column(db.Integer,primary_key=True)
-    location = db.Column(db.Integer)
-    company = db.Column(db.String(255))
-    service = db.Column(db.String(2550))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
+#     id = db.Column(db.Integer,primary_key=True)
+#     location = db.Column(db.String)
+#     company = db.Column(db.String(255))
+#     service = db.Column(db.String(2550))
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_music(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save_music(self):
+#         db.session.add(self)
+#         db.session.commit()
     
 
-    def __repr__(self):
-        return f'Music({self.company},{self.service})'
+#     def __repr__(self):
+#         return f'Music({self.company},{self.service})'
 
 

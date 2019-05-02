@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from .forms import ReviewForm,UpdateProfile,CarsForm,PhotographyForm
-from .. models import Reviews,User,Cars
+from .forms import ReviewForm,UpdateProfile,ProviderForm
+from .. models import Reviews,User,Cars,Providers,Grounds
 from flask import jsonify
 from flask_login import login_required,UserMixin,current_user
 from app import db
@@ -30,8 +30,10 @@ def user(user_id):
 def post():
     form = ProviderForm()
     if form.validate_on_submit():
-        title = form.title.data
-        content = form.content.data
+        location = form.location.data
+        company = form.company.data
+        service = form.service.data
+
 
         new_post = Providers()
         new_post.title = title
@@ -119,15 +121,6 @@ def single_review(id):
 def tents():
     return render_template('tents.html')
 
-
-@main.route('/grounds')
-def grounds():
-    return render_template('grounds.html')
-
-@main.route('/cars')
-def cars():
-    return render_template('cars.html')
-
 @main.route('/catering', methods=['GET','POST'])
 def Catering(category = "Catering"):
 
@@ -148,20 +141,29 @@ def photography(category = "Photography"):
 def music():
     return render_template('music.html')
 
+
+@main.route('/cars')
+def cars():
+    cars = Cars.query.all()
+    title="car service providers"
+    return render_template('cars.html',title=title, cars = cars)
+
 @main.route("/post_cars",methods=['GET','POST'])
 def post_cars():
-    form = CarsForm()
+    form = ProviderForm()
     if form.validate_on_submit():
         location = form.location.data
         company = form.company.data
         service = form.service.data
+
+       
 
         new_post_cars = Cars()
         new_post_cars.location = location
         new_post_cars.company= company
         new_post_cars.service = service
 
-        new_post_cars.save_cars()
+        new_post_cars.save_car()
 
         new_car = Cars(location = location, company = company, service = service)
         reviews = Reviews.query.all()
@@ -169,4 +171,34 @@ def post_cars():
         return redirect(url_for('main.cars'))
 
     title="Car service providers"
-    return render_template('post.html',title=title,article_form=form)
+    return render_template('post.html',title = title,provider_form=form)
+
+@main.route('/grounds')
+def grounds():
+    grounds = Grounds.query.all()
+    title = "grounds/venues you can hire"
+
+    return render_template('grounds.html',grounds=grounds, title=title)
+
+@main.route("/post_grounds",methods=['GET','POST'])
+def post_grounds():
+    form = ProviderForm()
+    if form.validate_on_submit():
+        location = form.location.data
+        company = form.company.data
+        service = form.service.data
+
+        new_post_grounds = Grounds()
+        new_post_grounds.location = location
+        new_post_grounds.company= company
+        new_post_grounds.service = service
+
+        new_post_grounds.save_ground()
+
+        new_car = Grounds(location = location, company = company, service = service)
+        reviews = Reviews.query.all()
+
+        return redirect(url_for('main.grounds'))
+
+    title="Car service providers"
+    return render_template('post.html',title = title,provider_form=form)

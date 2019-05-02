@@ -1,88 +1,87 @@
 {% extends 'base.html' %}
+
+
+
 {% block content %}
-<a href='/post_cars'><button>Add service</button></a>
-<div class="row" style="background-image: url('https://www.myrentsoftware.com/wp-content/uploads/2017/06/car-hire-age.jpg'); background-repeat: no-repeat; background-size: cover;">
-    <div class="welcome" style="height: 600px;text-align: center;margin:0 auto;">                   
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      {% if title %}
+      <title> {{ title }}</title>
+      {% else %}
+      <title> Car service providers </title>
+     
+      {% endif %}
+    </head>
+    <style>
+      body{
+        background-image :url('https://images.pexels.com/photos/917479/pexels-photo-917479.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1000');
+        background-attachment:fixed;
+        background-size: cover;
+        background-position: 100%;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+       }
+       #quote{
+         font-size: 35px;
+         font-family: 'Tangerine', cursive;
+
+       }
+       .jumbotron{
+         opacity: 0.6;
+       }
+       #quoteauthor{
+         float: left;
+         font-style: italic;
+       }
+       .well{
+         opacity:0.7;
+       }
+       button{
+         background-color: #b3735c;
+         height: 50px;
+         width: 100px;
+         border-radius: 50%;
+       }
+       a{
+         color: black;
+         
+       }
+       .panel{
+         opacity: 0.7;
+       }
+       #content{
+         font-size:25px
+       }
+       #articletitle{
+         font-size:30px
+       }
+     </style>
+     <body>
+  
+    
+<button><a href="{{url_for('main.post_cars')}}" >Submit Article</a></button>
+</div>
+<br>
+
+{% for car in cars  %}
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel">
+    <div class="panel-body">
+        <h2 id="articletitle">{{ car.location}}</h2>
+        <p id="content">{{ car.company }}</p>
+        
+        
+  
+        <div class="text-center">
+        <a href="/review/{{car.id}}" class="btn btn-primary">Review</a>
+      </div>
+      </div>
     </div>
   </div>
-<div class="row">
-    <div class="col-md-4">
-    <div class="card">
-      <img src="https://indigocarhire.co.uk/wp-content/uploads/2018/04/Why-Do-Car-Hire-Companies-Require-A-Deposit.jpg" width="300" height="300" class="rounded-circle" alt="avatar">
-      <div class="card-body">
-        <h5 class="card-title">AirBnb Cars</h5>
-        <p class="card-text">We give you a great ride with our modern cars <br>with low intrest rates and minimal fuel <br>consumption and maintainable</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Cotact +254711223344</small> <a class="btn btn-primary btn-lg" href="#">Review</a>
-      </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img src="https://www.petestaxiandrentals.com/wp-content/uploads/2018/07/Car-Rental-Antigua.jpg" width="300" height="300" class="rounded-circle" alt="avatar">
-          <div class="card-body">
-            <h5 class="card-title">Pete LTD</h5>
-            <p class="card-text">let you dream travel places not be limited<br>get yourself a pete modern car with highest<br>review rates and most trusted</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Contact 0722334455</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-          </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-              <img src="https://content3.jdmagicbox.com/comp/kakinada/j2/9999px884.x884.171009163023.q2j2/catalogue/prayaanam-in-kakinada-car-hire-klyhepzi8u.jpg" width="300" height="300" class="rounded-circle" alt="avatar">
-              <div class="card-body">
-                <h5 class="card-title">Prayaam</h5>
-                <p class="card-text">With prayaam we give you unlimited <br>travels including trucks cars or <br>busses with a cheap rate</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">contact 0733445566 </small><a class="btn btn-primary btn-lg" href="#">Reveiw</a>
-              </div>
-              </div>
-            </div>
-            
-    
-</div>
-<div class="row">
-    <div class="col-md-4">
-    <div class="card">
-      <img src="http://www.guptatravelsjabalpur.com/wp-content/uploads/2016/04/car-rentalservice.jpg" width="300" height="300" class="rounded-circle" alt="avatar">
-      <div class="card-body">
-        <h5 class="card-title">Lanta Cars</h5>
-        <p class="card-text">we provide a best service for car travels<br>with our affordable rates and <br>chaffeurs if you wish</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">contact 0744556677</small> <a class="btn btn-primary btn-lg" href="#">Review</a>
-      </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img src="https://wordpress-network.prod.aws.skyscnr.com/wp-content/uploads/2018/05/car-rental-island.jpg?w=1000&h=312&crop=1" width="300" height="300" class="rounded-circle" alt="avatar">
-          <div class="card-body">
-            <h5 class="card-title">ChapChap</h5>
-            <p class="card-text">Use chapchap today and save more <br> travel more and enjoy rides with friends</p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">contact 0755667788</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-          </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-              <img src="https://media-cdn.tripadvisor.com/media/photo-s/17/2e/ec/2c/modan-rent-a-car-inventory.jpg" width="300" height="300" class="rounded-circle" alt="avatar">
-              <div class="card-body">
-                <h5 class="card-title">Modan</h5>
-                <p class="card-text">Book today and let your travels<br>secured with modan cheap prices<br>as low as 2500 a day</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">contact 0720389122</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-              </div>
-              </div>
-            </div>
-            
-    
-</div>
-{% endblock content %}
+{% endfor %}
+
+</body>
+{% endblock %}
+</html>
