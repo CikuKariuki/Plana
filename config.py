@@ -6,7 +6,7 @@ class Config:
     '''
     QUOTES_API_BASE_URL='http://quotes.stormconsultancy.co.uk/random.json' 
     SECRET_KEY=os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wanjiku:mySql003@localhost/blogger'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wanjiku:mySql003@localhost/plana'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
 
     #  email configurations
@@ -24,7 +24,7 @@ class ProdConfig(Config):
 #     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wanjiku:mySql003@localhost/blog_test'
 
 class DevConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wanjiku:mySql003@localhost/blogger'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wanjiku:mySql003@localhost/plana'
     DEBUG = True
 
 config_options = {

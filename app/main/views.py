@@ -13,10 +13,10 @@ def index():
     '''
     view root page function that returns the index page and its data
     '''
-    providers = Providers.query.all()
+    # return redirect(url_for('main.cars'))
 
-    title = "Home of stories"
-    return render_template('index.html',title = title, quote = quote, quote_author = quote_author,providers = providers , author = current_user)
+    title = "Plan your event without hustle"
+    return render_template('index.html')
 
 @main.route('/user/<int:user_id>')
 def user(user_id):
@@ -68,25 +68,6 @@ def review(id):
     return render_template('new_review.html',review_form=form)
 
 
-# @main.route('/provider/review/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-# def new_review(id):
-#     form = ReviewForm()
-#     # provider = Provider.query.get_or_404(id)
-#     # comment = Review.query.all()
-    
-#     if form.validate_on_submit():
-#         review = form.review.data
-#        # Updated review instance
-#         new_review = Review(review=review,user=current_user)
-
-#         # save review method
-#         new_review.save_review()
-#         return redirect(url_for('.provider',id = provider.id ))
-
-#     title = f'{provider.title} review'
-#     return render_template('new_review.html',review_form=form, provider=provider)
-
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
@@ -133,3 +114,38 @@ def single_review(id):
         abort(404)
     # format_review = markdown2.markdown(review.movie_review,extras=["code-friendly", "fenced-code-blocks"])
     return render_template('review.html',review = review)
+
+@main.route('/tents')
+def tents():
+    return render_template('tents.html')
+
+
+@main.route('/grounds')
+def grounds():
+    return render_template('grounds.html')
+
+@main.route('/cars')
+def cars():
+    return render_template('cars.html')
+
+@main.route('/catering', methods=['GET','POST'])
+def Catering(category = "Catering"):
+
+   catering = Catering.query.all()
+
+   title = "Catering"
+   return render_template('catering.html', catering= catering, title=title)
+
+@main.route('/photography', methods=['GET','POST'])
+def photography(category = "Photography"):
+
+   photography = Photography.query.all()
+
+   title = "Photography"
+   return render_template('photography.html', photography= photography, title=title)
+
+@main.route('/music')
+def music():
+    return render_template('music.html')
+
+

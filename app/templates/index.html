@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block styles%} {{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+ {% endblock %}
+{% block content %}
+
+<img src="https://pbs.twimg.com/profile_images/998833275350106113/ZYy1G62J_400x400.jpg" width="60" height="60" class="rounded-circle" alt="avatar">
+<body>
+  <div class="row" style="background-image: url('https://media.cool-cities.com/web_news_001_dubai_mood558db_x_mob.jpg?h=530'); background-repeat: no-repeat; background-size: cover;">
+    <div class="welcome" style="height: 700px;margin:0 auto;">
+      <br>
+      <br>
+    
+      <br>
+      <img src="https://pbs.twimg.com/profile_images/998833275350106113/ZYy1G62J_400x400.jpg" width="400" height="400" class="rounded-circle" alt="avatar">                         
+      <br>
+      <br>
+      <button class="bg-blue hover:bg-blue-light text-white font-bold py-2 px-4 border-b-4 border-blue-dark hover:border-blue rounded">
+          Get Started
+        </button>
+    </div>
+  </div>
+<br>
+  <div class="row">
+  
+    <div class="bg-indigo-darkest text-center py-4 lg:px-4">
+        <div class="p-3 bg-indigo-darker items-center text-indigo-lightest leading-none lg:rounded-full flex lg:inline-flex" role="alert">
+          <span class="flex rounded-full bg-indigo uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
+          <span class="font-semibold mr-2 text-left flex-auto">Featured at event finder</span>
+          <svg class="fill-current opacity-75 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z"/></svg>
+        </div>
+      </div>
+      </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-4">
+  <div class="max-w-sm rounded overflow-hidden shadow-lg">
+      <img class="w-full" src="http://www.luxuryweddingtent.com/wp-content/uploads/2015/07/large-party-marquee-for-sale-luxury-wedding-tent-event-tents-shelter-tent-21.jpg" alt="Sunset in the mountains">
+      <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2">Tents Shelters</div>
+        <p class="text-grey-darker text-base">
+          We connect you with proffesional tents<br>suppliers with quality and affordable pricing
+        </p>
+        <button class="btn btn-outline-success text-center"><a class="nav-link" href="/tents">Explore</a></button>
+      </div>
+      <div class="px-6 py-3">
+        <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#tents</span>
+        <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#chairs</span>
+        <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#fields</span>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-md-4">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg">
+        <img class="w-full" src="https://u.tfstatic.com/restaurant_photos/885/239885/169/612/ed-s-catering-suggestie-3fe0e.jpg" alt="catherings">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">Catering</div>
+          <p class="text-grey-darker text-base">
+            Get the best caterers here with Plana
+          </p>
+          <button class="btn btn-outline-success text-center"><a class="nav-link" href="{{url_for('main.catering')}}">Explore</a></button>
+        </div>
+        <div class="px-6 py-4">
+          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#weddings</span>
+          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#travels</span>
+          <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#families</span>
+        </div>
+      </div>
+      </div>
+
+      <div class="col-md-4">
+          <div class="max-w-sm rounded overflow-hidden shadow-lg">
+              <img class="w-full" src="https://www.surfersrentacar.com.au/wp-content/uploads/2018/04/03_Things-to-Check-before-Hiring-a-Car.jpg" alt="Sunset in the mountains">
+              <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">Car Hire</div>
+                <p class="text-grey-darker text-base">
+                 Grab a key today and enjoy the roadtrip<br> with friends and family
+                </p>
+                <button class="btn btn-outline-success text-center"><a class="nav-link"href="{{url_for('main.cars')}}">Explore</a></button>
+              </div>
+              <div class="px-6 py-4">
+                <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#roadtrips</span>
+                <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker mr-2">#travel</span>
+                <span class="inline-block bg-grey-lighter rounded-full px-3 py-1 text-sm font-semibold text-grey-darker">#winter</span>
+              </div>
+            </div>
+            </div>
+</div>
+<br>
+<br>
+  <div class="container">
+      <div class="row" style="background-image: url('https://www.photoshopvideotutorial.com/freepsdmock/wp-content/uploads/2018/11/Free-PSD-Gold-Logo-Design-Mockup.jpg'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+        <div class="welcome" style="height: 300px;text-align: center;margin:0 auto;">
+          <h1 style="font-size: 60px; color: lightcoral;">ABOUT US</h1>
+          <br>
+          <img src="https://pbs.twimg.com/profile_images/998833275350106113/ZYy1G62J_400x400.jpg" width="150" height="150" class="rounded-circle" alt="avatar">
+        </div>
+      </div>
+      <div class="row" style="background-color: black;">
+        <div class="about" style="height: 200px;text-align:center;margin:0 auto;">
+          <br>
+          <h3 style="color:white;">Planner is a multifacated event company offering<br>users a robust solution to locate thier<br> needs  in a quicker time frame and quality services<br>The company combines a record label in leading<br> industry events.  
+          </h3>
+        </div>
+      </div>
+<br>
+<br>
+    <div class="row" style="background-image: url('https://www.tgh.org/sites/default/files/styles/news_carousel__700x400_/public/location-tampa-general-hospital_128_0.jpg?itok=-4wdDW1Y'); background-repeat: no-repeat; background-size: cover; background-attachment: fixed;">
+      <div class="welcome" style="height: 300px;text-align: center;margin:0 auto;">
+        <br>
+        <br>
+        <h1 style="font-size: 60px; color: lightcoral;">QUESTIONS?</h1>
+        <h3 style="color: white;">Explore what you need here with us today<br>Drop us a line on our contact page</h3>
+        <br>
+        <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full">
+            Get Answers
+          </button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="row" style="background-image: url('https://www.crystalgraphicsimages.com/photo/black-red-polygon-background-design_cg1p14438200c_th.jpg'); height: 300px;background-repeat: no-repeat; background-size: cover;background-attachment: fixed;">
+      <div class="footer">
+        <br>
+        <br>
+        <br>
+          <h1 style="color:white;font-size: 50px;"><img src="https://pbs.twimg.com/profile_images/998833275350106113/ZYy1G62J_400x400.jpg" width="100" height="100" class="rounded-circle" alt="avatar">  Finder</h1>
+          <br>
+          <br>
+          <br>
+          <br>
+          <sm style="color:white;text-align: center;">@copyright finder MC-16</sm>
+      </div>        
+    </div>
+
+  </div>
+{% endblock %}
