@@ -121,7 +121,7 @@ class Grounds:
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_catering(self):
+    def save_grounds(self):
         db.session.add(self)
         db.session.commit()
     
@@ -139,7 +139,7 @@ class Cars:
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_catering(self):
+    def save_cars(self):
         db.session.add(self)
         db.session.commit()
     
@@ -157,7 +157,7 @@ class Photography:
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_catering(self):
+    def save_photography(self):
         db.session.add(self)
         db.session.commit()
     
@@ -175,7 +175,7 @@ class Tents:
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_catering(self):
+    def save_tents(self):
         db.session.add(self)
         db.session.commit()
     
@@ -193,7 +193,7 @@ class Music:
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     reviews = db.relationship('Reviews', backref = 'author', lazy = True) 
 
-    def save_catering(self):
+    def save_music(self):
         db.session.add(self)
         db.session.commit()
     

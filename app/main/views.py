@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from .forms import ReviewForm,UpdateProfile,ProviderForm
-from .. models import Reviews,User,Providers
+from .forms import ReviewForm,UpdateProfile,CarsForm,PhotographyForm
+from .. models import Reviews,User,Cars
 from flask import jsonify
 from flask_login import login_required,UserMixin,current_user
 from app import db
@@ -148,4 +148,25 @@ def photography(category = "Photography"):
 def music():
     return render_template('music.html')
 
+@main.route("/post_cars",methods=['GET','POST'])
+def post_cars():
+    form = CarsForm()
+    if form.validate_on_submit():
+        location = form.location.data
+        company = form.company.data
+        service = form.service.data
 
+        new_post_cars = Cars()
+        new_post_cars.location = location
+        new_post_cars.company= company
+        new_post_cars.service = service
+
+        new_post_cars.save_cars()
+
+        new_car = Cars(location = location, company = company, service = service)
+        reviews = Reviews.query.all()
+
+        return redirect(url_for('main.cars'))
+
+    title="Car service providers"
+    return render_template('post.html',title=title,article_form=form)
