@@ -23,33 +23,20 @@
         font-family: 'Cormorant Garamond', serif;
         font-weight: 600;
        }
-       #quote{
-         font-size: 35px;
-         font-family: 'Tangerine', cursive;
-
-       }
-       .jumbotron{
-         opacity: 0.6;
-       }
-       #quoteauthor{
-         float: left;
-         font-style: italic;
-       }
-       .well{
-         opacity:0.7;
-       }
        button{
-         background-color: #b3735c;
+         background-color: #000;
          height: 50px;
          width: 100px;
-         border-radius: 50%;
+         margin-left: 45%;
+         color: white;
+         font-family: 'Cormorant Unicase', serif;
+         border-radius: 10%;
+         width: 150px;
+         height: 70px;
        }
+
        a{
          color: black;
-         
-       }
-       .panel{
-         opacity: 0.7;
        }
        #content{
          font-size:25px
@@ -57,11 +44,19 @@
        #articletitle{
          font-size:30px
        }
+       #knowmore{
+          background-color: rgba(0,0,0,0.1);
+          height: 50px;
+          border-radius: 5%;
+          color: black;
+          border: 1px solid green;
+          font-family: 'Righteous', cursive;
+        }
      </style>
      <body>
   
     
-<button><a href="{{url_for('main.post_grounds')}}" >Submit Article</a></button>
+<a href="{{url_for('main.post_grounds')}}" ><button style="color:white; font-size:20px;">Tell us about your grounds</button></a>
 </div>
 <br>
 
@@ -71,14 +66,9 @@
     <div class="panel-body">
         <h2 id="articletitle">{{ ground.location}}</h2>
         <p id="content">{{ ground.company }}</p>
-        <p>{{ground.service}}</p>
-        
-        
-  
-        <div class="text-center">
-        <a href="/review/{{ground.id}}" class="btn btn-primary">Review</a>
-      </div>
-      </div>
+        <p>{{ground.service | truncate (15)}}</p>
+        <a href="/details/{{ground.id}}" ><button class="btn btn-outline-success" id="knowmore">Know more</button></a>
+     </div>
     </div>
   </div>
 {% endfor %}

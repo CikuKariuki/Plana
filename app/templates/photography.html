@@ -1,1 +1,82 @@
-<h1>Site under construction</h1>
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      {% if title %}
+      <title> {{ title }}</title>
+      {% else %}
+      <title> Photography services </title>
+     
+      {% endif %}
+    </head>
+    <style>
+body{
+        background-image :url('https://images.pexels.com/photos/1447264/pexels-photo-1447264.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=800');
+        opacity: 1;
+        background-attachment:fixed;
+        background-size: cover;
+        background-position: 100%;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+       }
+       button{
+         background-color: #000;
+         height: 70px;
+         width: 120px;
+         margin-left: 45%;
+         color: white;
+         font-family: 'Cormorant Unicase', serif;
+         border-radius: 10%;
+         width: 150px;
+         height: 70px;
+       }
+       a{
+         color: black;
+        }
+        #knowmore{
+          background-color: rgba(0,0,0,0.1);
+          height: 50px;
+          border-radius: 5%;
+          color: black;
+          border: 1px solid green;
+          font-family: 'Righteous', cursive;
+        }
+        #knowmore:hover{
+          color: black;
+          border: 1px solid black;
+        }
+     </style>
+     <body>
+  
+    
+        <a href="{{url_for('main.post_photography')}}" ><button style="color:white; font-size:20px; height: 100px;width: 150px;">Tell us about your photography</button></a>
+      </div>
+<br>
+
+{% for photograph in photography  %}
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel">
+    <div class="panel-body">
+        <h2 id="articletitle">{{ photograph.location}}</h2>
+        <p id="content">{{ photograph.company }}</p>
+        <p>{{photograph.service}}</p>
+        
+        
+  
+        <div class="text-center">
+        <a href="/review/{{photograph.id}}" class="btn btn-primary">Review</a>
+        <form action="{{url_for('main.delete_photography', id = photography.id)}}" method="POST">
+          <input type="submit" class="btn btn-danger" value="Delete">
+        </form>
+        
+      </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+</body>
+{% endblock %}
+</html>

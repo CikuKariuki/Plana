@@ -1,73 +1,78 @@
-{% extends 'base.html'%}
-{% import 'bootstrap/wtf.html' as wtf%}
-
-
-
+{% extends 'base.html' %}
 {% block content %}
-<div class="row" style="background-image: url('https://images.pexels.com/photos/306059/pexels-photo-306059.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');">
-  <div class="welcome" style="height: 600px;text-align: center;margin:0 auto;">
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      {% if title %}
+      <title> {{ title }}</title>
+      {% else %}
+      <title> Catering services you can hire </title>
+     
+      {% endif %}
+    </head>
+    <style>
+      body{
+        background-image :url('https://images.pexels.com/photos/842571/pexels-photo-842571.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=700');
+        background-attachment:fixed;
+        background-size: cover;
+        background-position: 100%;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+       }
+       button{
+         background-color: #000;
+         height: 50px;
+         width: 100px;
+         margin-left: 45%;
+         color: white;
+         font-family: 'Cormorant Unicase', serif;
+         border-radius: 10%;
+         width: 150px;
+         height: 70px;
+       }
+       a{
+         color: black;
+       }
+       .panel{
+         opacity: 0.7;
+       }
+       #content{
+         font-size:25px
+       }
+       #articletitle{
+         font-size:30px
+       }
+     </style>
+     <body>
+  
+    
+<a href="{{url_for('main.post_grounds')}}" ><button style="color:white; font-size:20px;">Tell us about your catering</button></a>
+</div>
+<br>
+
+{% for ground in grounds  %}
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel">
+    <div class="panel-body">
+        <h2 id="articletitle">{{ ground.location}}</h2>
+        <p id="content">{{ ground.company }}</p>
+        <p>{{ground.service}}</p>
+        
+        
+  
+        <div class="text-center">
+        <a href="/review/{{ground.id}}" class="btn btn-primary">Review</a>
+      </div>
+      <form action="{{url_for('main.delete_caterers', id = caterer.id)}}" method="POST">
+        <input type="submit" class="btn btn-danger" value="Delete">
+      </form>
+      
+      </div>
+    </div>
   </div>
-</div>
-<div class="col-md-4">
-       <div class="card">
-           <img src="https://images.pexels.com/photos/1043519/pexels-photo-1043519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-https://images.pexels.com/photos/1043519/pexels-photo-1043519.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-" width="300" height="300" class="rounded-circle" alt="avatar">
-         <div class="card-body">
-           <h5 class="card-title">Mathwiti na makeki</h5>
-           <p class="card-text">Best desert services <br> Sugary goodness.Ghai!!</p>
-         </div>
-         <div class="card-footer">
-           <small class="text-muted">contact 0755667788</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-         </div>
-         </div>
-       </div>
-<div class="col-md-4">
-       <div class="card">
-           <img src="https://images.pexels.com/photos/2059193/pexels-photo-2059193.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-https://images.pexels.com/photos/2059193/pexels-photo-2059193.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-" width="300" height="300" class="rounded-circle" alt="avatar">
-         <div class="card-body">
-           <h5 class="card-title">Veggy</h5>
-           <p class="card-text">Vegeterian food<br> quality and fresh food  </p>
-         </div>
-         <div class="card-footer">
-           <small class="text-muted">contact 0755667788</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-         </div>
-         </div>
-       </div>
+{% endfor %}
 
-
-
-<div class="col-md-4">
-   <div class="card">
-       <img src="https://images.pexels.com/photos/954677/pexels-photo-954677.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-https://images.pexels.com/photos/954677/pexels-photo-954677.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-" width="300" height="300" class="rounded-circle" alt="avatar">
-     <div class="card-body">
-       <h5 class="card-title">Chakula</h5>
-       <p class="card-text">For the best food services <br> quality and fresh food </p>
-     </div>
-     <div class="card-footer">
-       <small class="text-muted">contact 0755667788</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-     </div>
-     </div>
-   </div>
-   <div class="col-md-4">
-       <div class="card">
-         <img src="https://images.pexels.com/photos/111130/potatoes-ketchup-murder-blood-111130.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-https://images.pexels.com/photos/111130/potatoes-ketchup-murder-blood-111130.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500
-" width="300" height="300" class="rounded-circle" alt="avatar">
-         <div class="card-body">
-           <h5 class="card-title">Huduma Foods</h5>
-           <p class="card-text"><br>kwa chakula bora<br></p>
-         </div>
-         <div class="card-footer">
-           <small class="text-muted">contact 0720389122</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-         </div>
-         </div>
-       </div>
-
-
-</div>
-{% endblock content %}
+</body>
+{% endblock %}
+</html>

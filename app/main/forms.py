@@ -15,33 +15,3 @@ class ProviderForm(FlaskForm):
     company = StringField("Company name?")
     service = TextAreaField('What do you provide?')
     submit = SubmitField('Submit')
-
-# class MusicForm(FlaskForm):
-#     location = StringField("Where are you located?", validators = [Required()])
-#     company = StringField("Company name?")
-#     service = TextAreaField('What do you provide?')
-#     submit = SubmitField('Submit')
-
-# class TentsForm(FlaskForm):
-#     location = StringField("Where are you located?", validators = [Required()])
-#     company = StringField("Company name?")
-#     service = TextAreaField('What do you provide?')
-#     submit = SubmitField('Submit')
-
-# class GroundsForm(FlaskForm):
-#     location = StringField("Where are you located?", validators = [Required()])
-#     company = StringField("Company name?")
-#     service = TextAreaField('What do you provide?')
-#     submit = SubmitField('Submit')
-
-# class PhotographyForm(FlaskForm):
-#     location = StringField("Where are you located?", validators = [Required()])
-#     company = StringField("Company name?")
-#     service = TextAreaField('What do you provide?')
-#     submit = SubmitField('Submit')
-
-# class CarsForm(FlaskForm):
-#     location = StringField("Where are you located?", validators = [Required()])
-#     company = StringField("Company name?")
-#     service = TextAreaField('What do you provide?')
-#     submit = SubmitField('Submit')

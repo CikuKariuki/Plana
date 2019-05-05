@@ -1,66 +1,34 @@
-<!-- <div class="navbar navbar-inverse" role="navigation">
+ <div class="navbar navbar-inverse" style="background-color:white;" role="navigation">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">PLANA </a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li><a href="/cars">Cars</a></li>
-                <li><a href="/music">Music</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                {% if current_user.is_authenticated %}
-                <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
-                {% else %}
-                <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
-                {%endif%}
-            </ul>
-
-        </div>
-
-    </div>
-</div> -->
-<div class="navbar navbar-light bg-light" role="navigation">
-    <div class="container-fluid">  
-            <div class="navbar-header">
-            <nav class="navbar navbar-expand-md navbar-dark bg-steel">
-        <div class="container" >
-            <a class="navbar-brand mr-4" href="/" style="color: black;"><img src="https://pbs.twimg.com/profile_images/998833275350106113/ZYy1G62J_400x400.jpg" width="60" height="60" class="rounded-circle" alt="avatar">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+       <div class="navbar-header">
             <span class="navbar-toggler-icon"></span>
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
-                    <div class="navbar-collapse collapse">
-                <a class="nav-item nav-link" href="/" style="color: black; font-size: 20px;">Home</a>
-                <a class="nav-item nav-link" href="/cars" style="color: black;">Cars</a>
-                <a class="nav-item nav-link" href="/music" style="color: black;">Music</a>
-                <a class="nav-item nav-link" href="/tents" style="color: black;">Tents</a>
-                <a class="nav-item nav-link" href="/photography" style="color: black;">Photography</a>
-                <a class="nav-item nav-link" href="/catering" style="color: black;">Catering</a>
-                <a class="nav-item nav-link" href="/grounds" style="color: black;">Grounds</a>
-
-                
-
+            
             </div>
-            </div>
-            <!-- Navbar Right Side -->
-            <div class="navbar-nav" >
-                <a class="nav-item nav-link" href="{{url_for('auth.login')}}" style="color: black;">Login</a>
-                <a class="nav-item nav-link" href="{{url_for('auth.register')}}" style="color: black;">Register</a>
-            </div>
-            </div>
-        </div>
-        </nav>
-</div>
-</div>
-</div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a class="navbar-brand" href="/"><img src="https://tbncdn.freelogodesign.org/2885e53c-c280-4879-9b3e-6bc57308e821.png?1556866288909" width="60" height="60" class="rounded-circle" style="border-radius:100%;padding-top:0px; margin-bottom: 20px;" alt="avatar">  </a>                       
+                    </li>
+                    <li><a href="/" style="color:black;font-size:15px;">HOME</a></li>
+                    <li><a href="/grounds" style="color:black;font-size:15px;">GROUNDS</a></li>
+                    <li><a href="/tents" style="color:black;font-size:15px;">TENTS</a></li>
+                    <li><a href="/cars" style="color:black;font-size:15px;">CARS</a></li>
+                    <li><a href="/caterers" style="color:black;font-size:15px;">CATERERS</a></li>
+                    <li><a href="/songs" style="color:black;font-size:15px;">MUSIC</a></li>
+                    <li><a href="/photography"style="color:black;font-size:15px;">PHOTOGRAPHY</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_authenticated %}
+                    <li><a href="{{url_for('main.profile',uname=current_user.username)}}" style="color:black;font-size:10px;">PROFILE</a></li>
+                    <li><a href="{{url_for('auth.logout')}}" style="color:black;font-size:10px;">SIGN OUT</a></li>
+                    {% else %}
+                    <li><a href="{{url_for('auth.login')}}" style="color:black;font-size:10px;">SIGN IN</a></li>
+                    {%endif%}
+                </ul>
+            </div> 
+        </div> 
+    </div>  

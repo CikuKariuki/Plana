@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      {% if title %}
+      <title> {{ title }}</title>
+      {% else %}
+      <title> Where to get Music </title>
+     
+      {% endif %}
+    </head>
+    <style>
+       body{
+        background-image :url('https://images.pexels.com/photos/34221/violin-musical-instrument-music-sound.jpg?auto=compress&cs=tinysrgb&dpr=1&w=1500');
+        opacity: 1;
+        background-attachment:fixed;
+        background-size: cover;
+        background-position: 100%;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+       }
+       button{
+         background-color: #b3735c;
+         height: 50px;
+         width: 100px;
+         border-radius: 50%;
+       }
+       a{
+         color: black;
+       }
+       #content{
+         font-size:25px
+       }
+       #comments{
+         text-decoration: underline;
+       }
+       #review{
+          background-color: rgba(0,0,0,0.1);
+          height: 35px;
+          border-radius: 5%;
+          color: black;
+          border: 1px solid #0097a7;
+          font-family: 'Righteous', cursive;
+        }
+       #display{
+         display: flex;
+         flex-direction: row;
+         justify-content: space-between;
+       }
+       #location{
+         text-decoration: underline;
+       }
+     </style>
+     <body>
+ 
+<div class="container">
+  <div class="row">
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+    <div class="panel">
+    <div class="panel-body">
+      
+      <h2 id="location">{{ song.location}}</h2>
+      <p id="content">{{ song.company }}</p>
+      <p>{{song.service }}</p>
+        <div id="display">
+            <a href="/review/{{ground.id}}" class="btn btn-primary">Review</a>
+            <form action="{{url_for('main.delete_grounds', id = ground.id)}}" method="POST">
+              <input type="submit" class="btn btn-danger" value="Delete">
+            </form>
+          
+        </div>
+    </div>
+  </div>
+  </div>
+  <div class="col-md-6">
+      <div class="panel">
+          <div class="panel-body">
+   <h1 id="comments">Comments</h1>
+   {% for review in reviews %}
+<p>{{review.review}}</p>
+{% endfor %}
+</div>
+    </div>
+  </div>
+</div>
+</body>
+{% endblock %}
+

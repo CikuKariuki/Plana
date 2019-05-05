@@ -1,47 +1,75 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row" style="background-image: url('https://www.grimespartytents.com/wp-content/uploads/2018/04/types-of-tents-for-rent.png'); background-repeat: no-repeat; background-size: cover;">
-    <div class="welcome" style="height: 600px;text-align: center;margin:0 auto;">                      
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-    <div class="card">
-      <img src="https://www.grimespartytents.com/wp-content/uploads/2018/04/types-of-tents-for-rent.png" width="300" height="300" class="rounded-circle" alt="avatar">
-      <div class="card-body">
-        <h5 class="card-title">Isabelle</h5>
-        <p class="card-text">Isabbelle is an ultimate choice of music<br> that brings people together <br>and with the love of pop sounds and oters</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Cotact +254711223344</small> <a class="btn btn-primary btn-lg" href="#">Review</a>
-      </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card">
-            <img src="https://in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-music-unfilteredopen-mic-for-originals-and-covers-2019-4-22-t-20-5-11.jpg" width="300" height="300" class="rounded-circle" alt="avatar">
-          <div class="card-body">
-            <h5 class="card-title">Reggae Club</h5>
-            <p class="card-text">The juzz is always here with you to have the best <br> bits ...<br> </p>
-          </div>
-          <div class="card-footer">
-            <small class="text-muted">Contact 0722334455</small><a class="btn btn-primary btn-lg" href="#">Review</a>
-          </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-              <img src="http://cdn.eventfinda.co.nz/uploads/events/transformed/1160364-519814-7.jpg?v=4" width="300" height="300" class="rounded-circle" alt="avatar">
-              <div class="card-body">
-                <h5 class="card-title">Weekii</h5>
-                <p class="card-text">With prayaam we give you unlimited <br>travels including trucks cars or <br>busses with a cheap rate</p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">contact 0733445566 </small><a class="btn btn-primary btn-lg" href="#">Reveiw</a>
-              </div>
-              </div>
-            </div>
-            
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      {% if title %}
+      <title> {{ title }}</title>
+      {% else %}
+      <title> Tent Providers </title>
+      {% endif %}
+    </head>
+    <style>
+      body{
+        background-image :url('https://images.pexels.com/photos/917479/pexels-photo-917479.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1000');
+        background-attachment:fixed;
+        background-size: cover;
+        background-position: 100%;
+        font-family: 'Cormorant Garamond', serif;
+        font-weight: 600;
+       }
+       button{
+         background-color: #000;
+         height: 50px;
+         width: 100px;
+         margin-left: 45%;
+         color: white;
+         font-family: 'Cormorant Unicase', serif;
+         border-radius: 10%;
+         width: 150px;
+         height: 70px;
+       }
+       a{
+         color: black;
+       }
+       .panel{
+         opacity: 0.7;
+       }
+       #content{
+         font-size:25px
+       }
+       #articletitle{
+         font-size:30px
+       }
+     </style>
+     <body>
+  
     
+<a href="{{url_for('main.post_tents')}}" ><button style="color:white; font-size:20px;">Tell us about your tents</button></a>
+
 </div>
-{% endblock content %}
+<br>
+
+{% for tent in tents  %}
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+    <div class="panel">
+    <div class="panel-body">
+        <h2 id="articletitle">{{ tent.location}}</h2>
+        <p id="content">{{ tent.company }}</p>
+        <p>{{tent.service}}</p>
+        
+        <div class="text-center">
+        <a href="/review/{{tent.id}}" class="btn btn-primary">Review</a>
+        <form action="{{url_for('main.delete_tents', id = tent.id)}}" method="POST">
+            <input type="submit" class="btn btn-danger" value="Delete">
+          </form>
+      </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+</body>
+{% endblock %}
+</html>
